@@ -1,0 +1,19 @@
+version: '2'
+services:
+ nfs4:
+  image: takanomasaki/nfs4-alpine
+  privileged: true
+  container_name: nfs4-alpine
+  hostname: nfs4-alpine
+  environment:
+  - NFS_EXPORT_DIR=/workspace
+#  - NFS_EXPORT_DOMAIN
+#  - NFS_EXPORT_OPTIONS
+  ports:
+  - "111:111/tcp"
+  - "111:111/udp"
+  - "2049:2049/tcp"
+  - "2049:2049/udp"
+  volumes:
+  - /data/workspace:/workspace
+  restart: always
